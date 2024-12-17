@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Awasthi | Portfolio</title>
+    <link rel="stylesheet" href="new_port_style.css">
+    <script src="new_port.js" defer></script>
+</head>
+<body>
+    <header id="home">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-content">
+            <h1>Hi, I'm <span id="animated-text">Krishna Awasthi</span></h1>
+            <p>Passionate about creating impactful solutions with technology</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a second-year B.Tech student with expertise in C, Python, and HTML, passionate about IoT and assistive technologies. My projects focus on empowering differently-abled individuals and showcasing user-centric designs.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>IoT Smart Glasses</h3>
+            <p>An assistive device enabling the visually impaired to "see" using text-to-speech and image-to-text recognition technologies.</p>
+        </div>
+        <div class="project">
+            <h3>Event Planning Website</h3>
+            <p>A modern website designed for event planning companies, featuring sections for weddings, concerts, and more.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li>Programming: C, Python, HTML</li>
+            <li>IoT Development</li>
+            <li>Data Visualization & Analytics</li>
+            <li>Public Speaking & Teamwork</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="#" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Krishna Awasthi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const words = ["Krishna Awasthi", "Developer", "Programmer", "Software Engineer"];
+        const textElement = document.getElementById('animated-text');
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                textElement.textContent = currentWord.substring(0, charIndex--);
+            } else {
+                textElement.textContent = currentWord.substring(0, charIndex++);
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1500); // Pause before deleting
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(typeEffect, 1000); // Pause before typing next word
+            } else {
+                setTimeout(typeEffect, isDeleting ? 100 : 200);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', typeEffect);
+    </script>
+</body>
+</html>
